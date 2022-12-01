@@ -22,6 +22,7 @@ class PostSerializer(serializers.ModelSerializer):
     group = SlugRelatedField(slug_field='id',
                              queryset=Group.objects.all(),
                              required=False)
+
     class Meta:
         fields = '__all__'
         read_only_fields = ('id',)
@@ -30,9 +31,9 @@ class PostSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     author = SlugRelatedField(read_only=True,
-                                          slug_field='username')
+                              slug_field='username')
     post = SlugRelatedField(read_only=True,
-                                        slug_field='id')
+                            slug_field='id')
 
     class Meta:
         fields = '__all__'
